@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info" monitorinterval="60">
+    <Properties>
+        <Property name="layoutPattern">%d [%t] %level [%X{logId}] %logger{36} (%F:%L) - %msg%n</Property>
+    </Properties>
+    <!-- 定义所有的appender -->
+    <appenders>
+        <!-- 输出控制台的配置 -->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layoutPattern}"/>
+        </Console>
+        <!-- ERROR 日志 -->
+        <RollingFile name="ERROR-FILE" fileName="/data/logs/store-api-error.log"
+                     filePattern="/data/logs/store-api-error-%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${layoutPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <!--log 日志-->
+        <RollingFile name="LOG-File" fileName="/data/logs/store-api.log"
+                     filePattern="/data/logs/store-api-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${layoutPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </appenders>
+    <loggers>
+        <Root level="info" includeLocation="true">
+            <appender-ref ref="CONSOLE"/>
+            <!--<appender-ref ref="LOG-File"/>-->
+            <!--<appender-ref ref="ERROR-FILE"/>-->
+        </Root>
+    </loggers>
+</configuration>

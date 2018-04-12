@@ -1,0 +1,48 @@
+# 腾讯cos - test
+#store:
+#  credential:
+#    app-id: 1255565312
+#    secrect-id: AKIDlLuMpHEoqgLKnQ7KWXZFoDTXXLLFqvsk
+#    secrect-key: MijWFtOsw4GUoW9h5S0Y7xqfyOrFbu10
+#  region: ap-shanghai
+#  cdn: true
+#  platform: cos
+#  default-bucket: igen
+#  url: http://replace-bucket-${store.credential.app-id}.${store.platform}.${store.region}.myqcloud.com/
+#  cdn-url: http://replace-bucket-${store.credential.app-id}.file.myqcloud.com/
+#
+#server:
+#  port: 8090
+#  context-path: /igen-store
+
+# 腾讯cos - product
+store:
+  credential:
+    app-id: ********
+    secrect-id: ********
+    secrect-key: ********
+  region: ********
+  cdn: true
+  platform: cos
+  default-bucket: ********
+  url: http://replace-bucket-${store.credential.app-id}.${store.platform}.${store.region}.myqcloud.com/
+  cdn-url: http://replace-bucket-${store.credential.app-id}.file.myqcloud.com/
+
+server:
+  port: 8090
+  context-path: /store
+
+spring:
+  http:
+    multipart:
+      max-file-size: 20MB
+      location: /data/tmp
+      max-request-size: 20MB
+
+
+
+
+# actuator security switch
+#management:
+#  security:
+#    enabled: false

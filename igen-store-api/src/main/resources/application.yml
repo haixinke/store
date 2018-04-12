@@ -1,0 +1,4 @@
+#指定profile
+spring:
+  profiles:
+    active: cos

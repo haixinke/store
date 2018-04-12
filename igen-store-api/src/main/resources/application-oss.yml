@@ -1,0 +1,26 @@
+#阿里oss
+store:
+  credential:
+    app-id: 
+    secrect-id: ********
+    secrect-key: ********
+  region: ********
+  cdn: true
+  platform: oss
+  default-bucket: ********
+  url: http://replace-bucket.${store.region}.aliyuncs.com/
+  endpoint: http://${store.region}.aliyuncs.com
+
+server:
+  port: 8090
+  context-path: /igen-store
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+    multipart:
+      max-file-size: 20MB
+      location: /tmp/
+      max-request-size: 20MB
